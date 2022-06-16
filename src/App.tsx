@@ -1,8 +1,12 @@
+import MyRoutes from './routers'
+import GlobalStyle from './globalStyle'
+
 const App = () => {
   return (
-    <div>
-      <h1>Ola Mundo</h1>
-    </div>
+    <>
+      <GlobalStyle />
+      <MyRoutes />
+    </>
   )
 }
 
