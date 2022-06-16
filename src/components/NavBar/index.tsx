@@ -9,7 +9,8 @@ const NavBar = () => {
     const link = {
         home: '/home',
         dasbordAdmin: '/dasbordAdmin',
-        loginAdmin: '/loginAdmin'
+        loginAdmin: '/loginAdmin',
+        signup: '/signup'
     }
     return(
         <>
@@ -20,6 +21,9 @@ const NavBar = () => {
                         <FiMenu size={35} onClick={() => setActMenuMobile(!actMenuMobile)}/>
                     </MenuMobileIcon>
                     <Ul actMenuMobile={actMenuMobile}>
+                        <Li>
+                            <Link to={link.signup}>Signup</Link>
+                        </Li>
                         <Li>
                             <Link to={link.home}>Home</Link>
                         </Li>
@@ -78,7 +82,7 @@ const Ul = styled.ul<{actMenuMobile:boolean}>`
         height:87.7vh;
         flex-direction:column;
         align-items:center;
-        transtion: display 10s ease;
+        transition: display 10s ease;
         background:red;
         display:${({actMenuMobile}) => (actMenuMobile ? 'flex':'none')};
     }
