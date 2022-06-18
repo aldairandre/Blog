@@ -1,7 +1,10 @@
 import { getApp, initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 import {getFunctions} from "firebase/functions"
 import { getAuth } from "firebase/auth";
+import { connectFirestoreEmulator } from 'firebase/firestore';
+import { connectFunctionsEmulator } from 'firebase/functions';
+import { connectAuthEmulator  } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAfrMUwpAVXLRIG4C3ENBWeVcd1oQW3RAk",
@@ -13,7 +16,17 @@ const firebaseConfig = {
 };
 
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
+
 export const db = getFirestore()
 export const functions = getFunctions(getApp())
 export const authApp = getAuth()
+
+connectFirestoreEmulator(db,'localhost',8080)
+connectAuthEmulator(authApp,'http://localhost:9099')
+connectFunctionsEmulator(functions,'localhost',5001)
+
+//search data in Db
+const colRef = collection(db,"books")
+
+export const dbDatas = await getDocs(colRef)
