@@ -1,17 +1,29 @@
 import styled from "styled-components"
 import NavBar from "../components/NavBar"
 import { useState } from "react"
+import { addDoc } from "firebase/firestore"
+import { colRefUser } from "../firebase/config"
 
 const SignUp =  () => {
     const [formSignupDate, setFormSignupDate] = useState({})
-   
+
+    const addUserSignUp = (useData:object):void => {
+        addDoc(colRefUser,useData)
+        console.log('Dado adicionado');
+    }
+
+    const handleInputChange = (e:any) => {
+        const {name, value} = e.target
+        setFormSignupDate({...formSignupDate, [name]: value})
+    }
+
     const handleSubmit = (e: any) =>{
         e.preventDefault()
         const formData = new FormData(e.target)
         const data = Object.fromEntries(formData)
-        setFormSignupDate(data)
+        addUserSignUp(data)
     }
-    console.log(formSignupDate);
+
     return(
         <>
             <NavBar/>
@@ -24,6 +36,8 @@ const SignUp =  () => {
                         name="name" 
                         id="name" 
                         placeholder="Insira seu nome" 
+                        required
+                        onChange={handleInputChange}
                     />
                 </div>
                 <div>
@@ -32,7 +46,9 @@ const SignUp =  () => {
                         type="text" 
                         name="lastName" 
                         id="lastName" 
-                        placeholder="Insira seu sobrenome" 
+                        placeholder="Insira seu sobrenome"
+                        required 
+                        onChange={handleInputChange}
                     />
                 </div>
                 <div>
@@ -42,6 +58,8 @@ const SignUp =  () => {
                         name="email" 
                         id="email" 
                         placeholder="Insira seu email" 
+                        required
+                        onChange={handleInputChange}
                     />
                 </div>
                 <div>
@@ -51,6 +69,8 @@ const SignUp =  () => {
                         name="password" 
                         id="password" 
                         placeholder="Insira sua password"
+                        required
+                        onChange={handleInputChange}
                     />
                </div>
                 <input type="submit" value="Sign Up" />
