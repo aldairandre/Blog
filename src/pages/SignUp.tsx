@@ -1,17 +1,22 @@
 import styled from "styled-components"
 import NavBar from "../components/NavBar"
+import { useState } from "react"
 
 const SignUp =  () => {
-    const handleChange = (e: any) =>{
+    const [formSignupDate, setFormSignupDate] = useState({})
+   
+    const handleSubmit = (e: any) =>{
         e.preventDefault()
-        const {name, lastName,email} = e
-        console.log(`Name: ${name}, LastName: ${lastName}, Email: ${email}`);
+        const formData = new FormData(e.target)
+        const data = Object.fromEntries(formData)
+        setFormSignupDate(data)
     }
+    console.log(formSignupDate);
     return(
         <>
             <NavBar/>
             <Title>Sign Up</Title>
-            <Form onSubmit={handleChange}>
+            <Form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Nome</label>
                     <input 
@@ -19,7 +24,6 @@ const SignUp =  () => {
                         name="name" 
                         id="name" 
                         placeholder="Insira seu nome" 
-                        onClick={handleChange}
                     />
                 </div>
                 <div>
@@ -29,7 +33,6 @@ const SignUp =  () => {
                         name="lastName" 
                         id="lastName" 
                         placeholder="Insira seu sobrenome" 
-                        onClick={handleChange}
                     />
                 </div>
                 <div>
@@ -39,21 +42,29 @@ const SignUp =  () => {
                         name="email" 
                         id="email" 
                         placeholder="Insira seu email" 
-                        onClick={handleChange}
                     />
                 </div>
+                <div>
+                   <label htmlFor="password">Password</label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        id="password" 
+                        placeholder="Insira sua password"
+                    />
+               </div>
                 <input type="submit" value="Sign Up" />
             </Form>
         </>
     )
 }
 
-const Title = styled.h1`
+export const Title = styled.h1`
     text-align:center;
     margin: 23px 0;
 `
 
-const Form = styled.form`
+export const Form = styled.form`
     width: 90%;
     background: #f1f1f1;
     text-align: center;
