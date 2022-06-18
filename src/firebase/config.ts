@@ -22,11 +22,14 @@ export const db = getFirestore()
 export const functions = getFunctions(getApp())
 export const authApp = getAuth()
 
-connectFirestoreEmulator(db,'localhost',8080)
-connectAuthEmulator(authApp,'http://localhost:9099')
-connectFunctionsEmulator(functions,'localhost',5001)
+if(window.location.hostname === "localhost"){
+  connectFirestoreEmulator(db,'localhost',8080)
+  connectAuthEmulator(authApp,'http://localhost:9099')
+  connectFunctionsEmulator(functions,'localhost',5001)
+}
 
 //search data in Db
 const colRef = collection(db,"books")
 
 export const dbDatas = await getDocs(colRef)
+export const colRefUser = collection(db,'userSignUp')
