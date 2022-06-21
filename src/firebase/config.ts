@@ -32,4 +32,3 @@ if(window.location.hostname === "localhost"){
 const colRef = collection(db,"books")
 
 export const dbDatas = await getDocs(colRef)
-export const colRefUser = collection(db,'userSignUp')

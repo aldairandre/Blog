@@ -3,10 +3,28 @@ import NavBar from "../components/NavBar"
 import profilePhoto from  '../assets/image/Aldair-Andre.png'
 import Card from "../components/Main/card"
 import NewPost from "../components/Main/NewPost"
+import { collection, CollectionReference, onSnapshot} from "firebase/firestore"
+import { db } from "../firebase/config"
+import { useEffect, useState } from "react"
 
 const DesborAdmin = () => {
+    const colRefPost = collection(db,'posts')
+    const [allPost,setAllPost] = useState<object[]>([])
+
+   useEffect(
+    () => {
+        const searchPost = async (colRef:CollectionReference) => {
+            onSnapshot(colRef,(snapshot) => {
+                const dataArray:object[] =[]
+                snapshot.docs.map((doc)=>dataArray.push({...doc.data(),id:doc.id}))
+                setAllPost(dataArray)
+            })
+        }
+        searchPost(colRefPost)
+    },[allPost]
+   )
     return (
-        <>
+        <> 
             <NavBar/>
             <Title>Dasbord de Adminstração</Title>
             <div>
@@ -22,9 +40,19 @@ const DesborAdmin = () => {
                 <NewPost/>
                 <SubTitle>Seus Posts</SubTitle>
                 <ContainerCards>
-                    <Card/>
-                    <Card/>
-                    <Card/>
+                    {
+                        allPost &&(
+                            allPost.map(
+                                (post:any) => (
+                                    <Card 
+                                        title={post.title} 
+                                        conteudo={post.conteudo} 
+                                        id={post.id}
+                                    />
+                                )
+                            )
+                        )
+                    }
                 </ContainerCards>
                 
             </div>
