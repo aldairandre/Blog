@@ -1,11 +1,12 @@
 import styled from "styled-components"
 
-const Card = () => {
+const Card = ({title,conteudo,id}:any) => {
     return(
-        <Container>
-            <h1>JSX</h1>
-            <p>Olá, eu sou a principal maneira de escrever html em React</p>
-            <p>Ou pelo menos até em 2022, sabe se la se vão outra coisa...</p>
+        <Container key={id}>
+            <h1>{title.toUpperCase()}</h1>
+            <p>{conteudo}</p>
+            {/* <p> </p>
+            <p>Ou pelo menos até em 2022, sabe se la se vão outra coisa...</p> */}
             <div className="actions">
                 <p>Editar</p>
                 <p>Deletar</p>
