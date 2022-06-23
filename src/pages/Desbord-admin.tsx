@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import NavBar from "../components/NavBar"
-import profilePhoto from  '../assets/image/Aldair-Andre.png'
+import noProfilePhoto from '../assets/image/no-photo.png'
 import Card from "../components/Main/Card"
 import NewPost from "../components/Main/NewPost"
 import { collection, CollectionReference, onSnapshot} from "firebase/firestore"
@@ -36,7 +36,7 @@ const DesborAdmin = () => {
             <Title>Dasbord de Adminstração</Title>
             <div>
                 <ContainerProfileInfo>
-                    <img src={profilePhoto} alt="Foto Admin"/>
+                    <ProfilePhoto  src={noProfilePhoto} alt="Foto Admin"></ProfilePhoto>
                     <ProfileName>Nome da Pessoa</ProfileName>
                     <div>
                         <p>Editar foto</p>
@@ -106,6 +106,14 @@ const ContainerProfileInfo = styled.div`
         padding: 15px 0;
         background:#f1f1f1;
         row-gap: 5px;
+    }
+`
+
+const ProfilePhoto = styled.img`
+    @media(max-width:768px){
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 50%;
     }
 `
 
