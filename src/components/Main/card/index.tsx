@@ -1,15 +1,36 @@
+import { deleteDoc, doc, DocumentReference } from "firebase/firestore"
 import styled from "styled-components"
+import { db } from "../../../firebase/config"
 
-const Card = ({title,conteudo,id}:any) => {
+
+const Card = ({title,conteudo,id,setEditModalOn,setDataToEdit}:any) => {
+    
     return(
-        <Container key={id}>
+        <Container key={id} id={id}>
             <h1>{title.toUpperCase()}</h1>
             <p>{conteudo}</p>
-            {/* <p> </p>
-            <p>Ou pelo menos até em 2022, sabe se la se vão outra coisa...</p> */}
             <div className="actions">
-                <p>Editar</p>
-                <p>Deletar</p>
+                <button
+                    onClick={
+                        () =>{
+                            window.scrollTo(0,0)
+                            setEditModalOn(true)
+                            setDataToEdit({
+                                title,
+                                conteudo,
+                                id
+                            })
+                        }
+                    }
+                >
+                    Editar
+                </button>
+                <button onClick={
+                    () => {
+                        const docRef:DocumentReference = doc(db,'posts',id)
+                        deleteDoc(docRef)
+                    }
+                }>Apagar</button>
             </div>
         </Container>
     )
@@ -38,14 +59,18 @@ const Container = styled.div`
         p{
             padding:0;
         }
-        p:first-child{
+        button:first-child{
             padding: 6px;
             background: #3cc112;
             color: #fff;
             border-radius: 6px;
+            border:none;
         }
-        p:last-child{
+        button:last-child{
             color:red;
+            border:none;
+            background:none;
+            text-decoration:underline;
         }
     }
 `

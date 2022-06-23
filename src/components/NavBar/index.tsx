@@ -10,7 +10,8 @@ const NavBar = () => {
         home: '/home',
         dasbordAdmin: '/dasbordAdmin',
         loginAdmin: '/loginAdmin',
-        signup: '/signup'
+        signup: '/signup',
+        modal: '/modal'
     }
     return(
         <>

@@ -2593,7 +2593,7 @@ firebase-frameworks@^0.4.2:
 
 firebase-tools@^11.1.0:
   version "11.1.0"
-  resolved "https://registry.npmjs.org/firebase-tools/-/firebase-tools-11.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-11.1.0.tgz#0b5a70855569a49fae09628ef3a48f9123e3bdaf"
   integrity sha512-6nBFOiuxsKl8AbPnsiBck7HT682cHzMuoRrXzajuNWjwTYvh4oW25BF/iLGP7MAGzI4Xuo2NDXwjDLg6HIR78Q==
   dependencies:
     "@google-cloud/pubsub" "^3.0.1"
@@ -4597,6 +4597,11 @@ react-hook-form@^7.32.1:
   version "7.32.1"
   resolved "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.32.1.tgz"
   integrity sha512-A0bsgZZUnGdG68sXLBNMN7zRYKbYc/ESjDkjrJZ8PZ8/96EQ0IwMfYY3wpopt+yn2+Mm3APEUkw+JdjYQSRVJA==
+
+react-icons@^4.2.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.4.0.tgz#a13a8a20c254854e1ec9aecef28a95cdf24ef703"
+  integrity sha512-fSbvHeVYo/B5/L4VhB7sBA1i2tS8MkT0Hb9t2H1AVPkwGfVHLJCqyr2Py9dKMxsyM63Eng1GkdZfbWj+Fmv8Rg==
 
 react-is@^16.7.0:
   version "16.13.1"

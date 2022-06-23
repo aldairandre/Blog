@@ -1,27 +1,24 @@
 import styled from "styled-components"
 import NavBar from "../components/NavBar"
 import { useState } from "react"
-import { addDoc } from "firebase/firestore"
-import { colRefUser } from "../firebase/config"
+import { addDoc, collection } from "firebase/firestore"
+import { db } from "../firebase/config"
 
 const SignUp =  () => {
     const [formSignupDate, setFormSignupDate] = useState({})
-
-    const addUserSignUp = (useData:object):void => {
-        addDoc(colRefUser,useData)
-        console.log('Dado adicionado');
-    }
-
-    const handleInputChange = (e:any) => {
+    const colRefUser = collection(db,'userSignUp')
+    
+    const handleInputChange = (e: { target: { name: any; value: any } }) => {
         const {name, value} = e.target
         setFormSignupDate({...formSignupDate, [name]: value})
     }
 
-    const handleSubmit = (e: any) =>{
+    const handleSubmit = (e:any) =>{
         e.preventDefault()
         const formData = new FormData(e.target)
         const data = Object.fromEntries(formData)
-        addUserSignUp(data)
+        addDoc(colRefUser,data)
+        document.querySelector('form')?.reset()
     }
 
     return(
