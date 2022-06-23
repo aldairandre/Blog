@@ -1,27 +1,34 @@
 import styled from "styled-components"
 import NavBar from "../components/NavBar"
 import profilePhoto from  '../assets/image/Aldair-Andre.png'
-import Card from "../components/Main/card"
+import Card from "../components/Main/Card"
 import NewPost from "../components/Main/NewPost"
 import { collection, CollectionReference, onSnapshot} from "firebase/firestore"
 import { db } from "../firebase/config"
 import { useEffect, useState } from "react"
+import Modal from "../components/Main/Modal"
 
 const DesborAdmin = () => {
     const colRefPost = collection(db,'posts')
     const [allPost,setAllPost] = useState<object[]>([])
-
+    const [editModalOn,setEditModalOn] = useState<boolean>(false);
+    const [dataToEdit,setDataToEdit] = useState<object>({
+        title:'',
+        conteudo: '',
+        id: ''
+    }) 
+    
    useEffect(
     () => {
         const searchPost = async (colRef:CollectionReference) => {
             onSnapshot(colRef,(snapshot) => {
                 const dataArray:object[] =[]
-                snapshot.docs.map((doc)=>dataArray.push({...doc.data(),id:doc.id}))
+                snapshot.docs.map((doc)=>dataArray.push({...doc.data(),id:doc.id}))  
                 setAllPost(dataArray)
             })
         }
         searchPost(colRefPost)
-    },[allPost]
+    },[]
    )
     return (
         <> 
@@ -43,18 +50,35 @@ const DesborAdmin = () => {
                     {
                         allPost &&(
                             allPost.map(
-                                (post:any) => (
+                                (post:any) => 
                                     <Card 
                                         title={post.title} 
                                         conteudo={post.conteudo} 
+                                        key={post.id}
                                         id={post.id}
+                                        allPost={allPost}
+                                        setAllPost={setAllPost}
+                                        setEditModalOn={setEditModalOn}
+                                        dataToEdit={dataToEdit}
+                                        setDataToEdit={setDataToEdit}
                                     />
-                                )
+                                
                             )
                         )
                     }
                 </ContainerCards>
-                
+
+                {
+                    editModalOn &&(
+                        <Modal 
+                            setEditModalOn={setEditModalOn}
+                            editModalOn={editModalOn}
+                            dataToEdit={dataToEdit} 
+                            colRefPost={colRefPost}
+                        />
+                    )
+                }
+               
             </div>
         </>
     )
