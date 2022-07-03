@@ -2,6 +2,7 @@ import { Link, Outlet } from "react-router-dom"
 import { FiMenu } from 'react-icons/fi'
 import styled from "styled-components"
 import { useState } from "react"
+import {logOut} from '../../services/auth'
 
 
 const NavBar = () => {
@@ -34,6 +35,13 @@ const NavBar = () => {
                         <Li>
                             <Link to={link.loginAdmin}>Login Admin</Link>
                         </Li> 
+                        <Li>
+                            <button
+                                onClick={logOut}
+                            >
+                                Log Out
+                            </button>
+                        </Li>
                     </Ul>        
                 </Nav>        
             </Header>

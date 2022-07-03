@@ -1,12 +1,10 @@
 import styled from "styled-components"
 import NavBar from "../components/NavBar"
 import { useState } from "react"
-import { addDoc, collection } from "firebase/firestore"
-import { db } from "../firebase/config"
+import { crateUser } from "../services/auth"
 
 const SignUp =  () => {
     const [formSignupDate, setFormSignupDate] = useState({})
-    const colRefUser = collection(db,'userSignUp')
     
     const handleInputChange = (e: { target: { name: any; value: any } }) => {
         const {name, value} = e.target
@@ -16,8 +14,8 @@ const SignUp =  () => {
     const handleSubmit = (e:any) =>{
         e.preventDefault()
         const formData = new FormData(e.target)
-        const data = Object.fromEntries(formData)
-        addDoc(colRefUser,data)
+        const data:any = Object.fromEntries(formData)
+        crateUser(data)
         document.querySelector('form')?.reset()
     }
 
@@ -26,28 +24,6 @@ const SignUp =  () => {
             <NavBar/>
             <Title>Sign Up</Title>
             <Form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="name">Nome</label>
-                    <input 
-                        type="text" 
-                        name="name" 
-                        id="name" 
-                        placeholder="Insira seu nome" 
-                        required
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="lastName">Sobrenome</label>
-                    <input 
-                        type="text" 
-                        name="lastName" 
-                        id="lastName" 
-                        placeholder="Insira seu sobrenome"
-                        required 
-                        onChange={handleInputChange}
-                    />
-                </div>
                 <div>
                     <label htmlFor="email">Email</label>
                     <input 
