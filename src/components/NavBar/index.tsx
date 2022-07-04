@@ -4,13 +4,12 @@ import styled from "styled-components"
 import { useState } from "react"
 import {logOut} from '../../services/auth'
 
-
 const NavBar = () => {
     const [actMenuMobile, setActMenuMobile] = useState(false) 
     const link = {
         home: '/home',
         dasbordAdmin: '/dasbordAdmin',
-        loginAdmin: '/loginAdmin',
+        loginAdmin: '/signin',
         signup: '/signup',
         modal: '/modal'
     }
@@ -83,9 +82,10 @@ const Ul = styled.ul<{actMenuMobile:boolean}>`
     align-items:baseline;
     justify-content:space-between;
     @media(max-width:768px){
+        z-index:1000;
         position:absolute;
         left:0;
-        top:12.3%;
+        top:13%;
         width:50%;
         padding:10px 0;
         height:87.7vh;

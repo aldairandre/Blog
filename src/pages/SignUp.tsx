@@ -2,6 +2,7 @@ import styled from "styled-components"
 import NavBar from "../components/NavBar"
 import { useState } from "react"
 import { crateUser } from "../services/auth"
+import Sign from "../components/SignForm"
 
 const SignUp =  () => {
     const [formSignupDate, setFormSignupDate] = useState({})
@@ -22,8 +23,12 @@ const SignUp =  () => {
     return(
         <>
             <NavBar/>
-            <Title>Sign Up</Title>
-            <Form onSubmit={handleSubmit}>
+            <Sign 
+                handleInputChange={handleInputChange}
+                handleSubmit={handleSubmit}
+                buttonText="Sign Up"
+            />
+            {/* <Form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email">Email</label>
                     <input 
@@ -47,44 +52,9 @@ const SignUp =  () => {
                     />
                </div>
                 <input type="submit" value="Sign Up" />
-            </Form>
+            </Form> */}
         </>
     )
 }
-
-export const Title = styled.h1`
-    text-align:center;
-    margin: 23px 0;
-`
-
-export const Form = styled.form`
-    width: 90%;
-    background: #f1f1f1;
-    text-align: center;
-    margin: 10px auto;
-    padding: 10px 10px;
-    div{
-        margin: 10px 0;
-        display: flex;
-        flex-direction:column;
-        align-items:flex-start;
-        label{
-            margin-bottom: 10px;
-        }
-        input{
-            width:100%;
-            padding:10px;
-        }
-    }
-    input[type=submit]{
-        margin-top: 10px;
-        padding: 10px;
-        width: 50%;
-        background: #f83333;
-        border-radius: 23px;
-        border: none;
-        color: #fff;
-    }
-`
 
 export default SignUp
