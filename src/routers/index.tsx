@@ -1,8 +1,9 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import DesborAdmin from "../pages/Desbord-admin";
 import Home from "../pages/Home";
-import LoginAdmin from "../pages/Login-admin";
+import LoginAdmin from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import SignIn from "../pages/SignIn";
 
 const MyRoutes: React.FC = () => {
     return (
@@ -13,6 +14,7 @@ const MyRoutes: React.FC = () => {
                 <Route path="dasbordAdmin" element={<DesborAdmin/>}/>
                 <Route path="loginAdmin" element={<LoginAdmin/>}/>
                 <Route path="signup" element={<SignUp/>}/>
+                <Route path="signup" element={<SignIn/>}/>
             </Routes>
         </BrowserRouter>
     )
