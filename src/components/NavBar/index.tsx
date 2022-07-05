@@ -53,6 +53,7 @@ const NavBar = () => {
 
 const Header = styled.header`
     display: flex;
+    max-height: 59px;
     padding: 10px 20px;
     background: #000;
     justify-content:space-between;
@@ -85,14 +86,14 @@ const Ul = styled.ul<{actMenuMobile:boolean}>`
         z-index:1000;
         position:absolute;
         left:0;
-        top:13%;
+        top:11.4%;
         width:50%;
         padding:10px 0;
-        height:87.7vh;
+        height:88.6vh;
         flex-direction:column;
         align-items:center;
         transition: display 10s ease;
-        background:red;
+        background:#9A36BD;
         display:${({actMenuMobile}) => (actMenuMobile ? 'flex':'none')};
     }
 `
@@ -109,7 +110,7 @@ const Li = styled.li`
 
 const MenuMobileIcon = styled(Li)`
     display: none;
-    color:red;
+    color:#fff;
     @media(max-width:768px){
         display: block;
     }

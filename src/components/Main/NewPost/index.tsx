@@ -1,7 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../../../firebase/config";
-import { Form } from "../../../pages/SignUp"
+import { Form } from "../Modal/index"
 
 const NewPost = () => {
     const [formNewPost,setFormNewPost] = useState({})

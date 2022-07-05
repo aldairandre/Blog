@@ -33,6 +33,7 @@ const LoginAdmin = () => {
             <Sign 
                 handleInputChange={handleInputChange}
                 handleSubmit={handleSubmit}
+                typography="Sign In"
                 buttonText="Sign In"
             /> 
         </>

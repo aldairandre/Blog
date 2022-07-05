@@ -1,6 +1,5 @@
 import { useState } from "react"
 import styled from "styled-components"
-import { Form } from "../../../pages/SignUp"
 import {   
             doc, 
             updateDoc
@@ -16,7 +15,7 @@ const Modal = ({editModalOn,setEditModalOn,dataToEdit}:any) => {
         
     }
 
-    const handleSubmit = (e:any) => {
+    const handleSubmit = (e: { preventDefault: () => void; target: any }) => {
         e.preventDefault()
         const formData = new FormData(e.target)
         const dataForm = Object.fromEntries(formData)
@@ -30,7 +29,7 @@ const Modal = ({editModalOn,setEditModalOn,dataToEdit}:any) => {
         <>
             <Background>
                     <Container>
-                        <EditForm onSubmit={handleSubmit} id="formEdit">
+                        <Form onSubmit={handleSubmit} id="formEdit">
                             <div>
                                 <label htmlFor="title">Titulo do Post</label>
                                 <input 
@@ -56,7 +55,7 @@ const Modal = ({editModalOn,setEditModalOn,dataToEdit}:any) => {
                                 />
                         </div>
                         <input type="submit" value="Editar" />
-                    </EditForm>
+                    </Form>
                 </Container>
                 <Closer onClick={() => {setEditModalOn(!editModalOn)}}>
                     Close
@@ -81,10 +80,28 @@ const Container = styled.div`
     
 `
 
-const EditForm = styled(Form)`
+export const Form = styled.form`
     margin:0 auto;
     border-bottom-left-radius: 36px;
     border-bottom-right-radius: 36px;
+    width: 90%;
+    background: #f1f1f1;
+    text-align: center;
+    margin: 10px auto;
+    padding: 10px 10px;
+    div{
+        margin: 10px 0;
+        display: flex;
+        flex-direction:column;
+        align-items:flex-start;
+        label{
+            margin-bottom: 10px;
+        }
+        input{
+            width:100%;
+            padding:10px;
+        }
+    }
     input[type=submit]{
         margin-top: 10px;
         padding: 10px;
