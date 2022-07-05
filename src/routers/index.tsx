@@ -14,7 +14,7 @@ const MyRoutes: React.FC = () => {
                 <Route path="dasbordAdmin" element={<DesborAdmin/>}/>
                 <Route path="loginAdmin" element={<LoginAdmin/>}/>
                 <Route path="signup" element={<SignUp/>}/>
-                <Route path="signup" element={<SignIn/>}/>
+                <Route path="signin" element={<SignIn/>}/>
             </Routes>
         </BrowserRouter>
     )

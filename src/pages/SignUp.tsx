@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import NavBar from "../components/NavBar"
 import { useState } from "react"
 import { crateUser } from "../services/auth"
@@ -26,33 +25,9 @@ const SignUp =  () => {
             <Sign 
                 handleInputChange={handleInputChange}
                 handleSubmit={handleSubmit}
+                typography="Sign Up"
                 buttonText="Sign Up"
             />
-            {/* <Form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input 
-                        type="email" 
-                        name="email" 
-                        id="email" 
-                        placeholder="Insira seu email" 
-                        required
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div>
-                   <label htmlFor="password">Password</label>
-                    <input 
-                        type="password" 
-                        name="password" 
-                        id="password" 
-                        placeholder="Insira sua password"
-                        required
-                        onChange={handleInputChange}
-                    />
-               </div>
-                <input type="submit" value="Sign Up" />
-            </Form> */}
         </>
     )
 }
