@@ -16,7 +16,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme();
 
-export default function Sign({handleInputChange,handleSubmit,buttonText,typography}:any) {
+export default function Sign({handleInputChange,handleInputChange2,handleSubmit,buttonText,typography,erroEmail,erroPass,setDisable,disableOff}:any) {
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -38,25 +38,26 @@ export default function Sign({handleInputChange,handleSubmit,buttonText,typograp
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
-              required
               fullWidth
               id="email"
               label="Email Address"
               name="email"
               autoComplete="email"
               autoFocus
-              onChange={handleInputChange}
+              //onChange={handleInputChange}
+              onMouseLeave={handleInputChange}
+              error={erroEmail}
             />
             <TextField
               margin="normal"
-              required
               fullWidth
               name="password"
               label="Password"
               type="password"
               id="password"
               autoComplete="current-password"
-              onChange={handleInputChange}
+              onChange={handleInputChange2}
+              error={erroPass}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -67,6 +68,7 @@ export default function Sign({handleInputChange,handleSubmit,buttonText,typograp
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={disableOff}
             >
               {buttonText}
             </Button>
