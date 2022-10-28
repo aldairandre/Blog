@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import NavBar from "../components/NavBar"
 import noProfilePhoto from '../assets/image/no-photo.png'
-//import Card from "../components/Main/Card"
+import Card from "../components/Main/Card-mui"
 import NewPost from "../components/Main/NewPost"
 import { collection, CollectionReference, onSnapshot} from "firebase/firestore"
 import { db } from "../firebase/config"
