@@ -4,10 +4,15 @@ import { db } from "../../../firebase/config";
 import { Form } from "../Modal/index"
 
 const NewPost = () => {
+    interface post {
+        name:string,
+        content:string,
+        highlight:string
+    }
     const [formNewPost,setFormNewPost] = useState({})
     const colRefPost = collection(db,'posts')
 
-    const handleInputChange = (e: { target: { name: any; value: any } }) => {
+    const handleInputChange = (e: { target: { name: string; value: string } }) => {
         const {name, value} = e.target
         setFormNewPost({...formNewPost, [name]: value})
     }
@@ -36,10 +41,22 @@ const NewPost = () => {
             <div>
                 <label htmlFor="conteudo">Conteudo</label>
                 <input 
-                    type="tel" 
+                    type="text" 
                     name="conteudo" 
                     id="conteudo" 
                     placeholder="Conteudo"
+                    onChange={handleInputChange}
+                    required
+                />
+            </div>
+            <div>
+                <label htmlFor="highlight">Highlight</label>
+                <input 
+                    type="text" 
+                    name="highlight" 
+                    id="highlight" 
+                    placeholder="highlight"
+                    maxLength={1000}
                     onChange={handleInputChange}
                     required
                 />
