@@ -86,10 +86,10 @@ const Ul = styled.ul<{actMenuMobile:boolean}>`
         z-index:1000;
         position:absolute;
         left:0;
-        top:11.4%;
+        top:9.4%;
         width:50%;
         padding:10px 0;
-        height:88.6vh;
+        height:89.6vh;
         flex-direction:column;
         align-items:center;
         transition: display 10s ease;
