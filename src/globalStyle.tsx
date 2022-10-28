@@ -5,7 +5,8 @@ const GlobalStyle = createGlobalStyle `
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Poppins', sans-serif;
+        font-weight:300;
     }
     html {
 	    scroll-behavior: smooth;
@@ -13,7 +14,7 @@ const GlobalStyle = createGlobalStyle `
 
     @media(max-width:768px){
         h1, h2, h3, h4, h5 {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-weight: 400;
             line-height: 1.3;
         }
