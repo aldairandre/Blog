@@ -16,7 +16,7 @@ const NavBar = () => {
     return(
         <>
             <Header>
-                <Logo>Logo</Logo>
+                <Logo/>
                 <Nav>
                     <MenuMobileIcon>
                         <FiMenu size={35} onClick={() => setActMenuMobile(!actMenuMobile)}/>
@@ -53,18 +53,17 @@ const NavBar = () => {
 
 const Header = styled.header`
     display: flex;
-    max-height: 59px;
-    padding: 10px 20px;
-    background: #000;
+    padding: 10px 25px;
     justify-content:space-between;
-    align-items:baseline;
-    @media(max-width:768px){
-        align-items:flex-start;
-    }
 `
-const Logo = styled.h1`
-    color: #fff;
-    cursor:pointer;
+const Logo = styled.div`
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    background-image: url('./src/assets/image/sabrina.jpg');
+    background-position: 50% 10%;
+    background-size: cover;
+    background-repeat: no-repeat;
 `
 const Nav = styled.nav`
     width: 24%;
