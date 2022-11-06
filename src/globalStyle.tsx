@@ -5,21 +5,23 @@ const GlobalStyle = createGlobalStyle `
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'Poppins', sans-serif;
     }
     html {
 	    scroll-behavior: smooth;
+        background: #000;
     }
 
     @media(max-width:768px){
         h1, h2, h3, h4, h5 {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-weight: 400;
             line-height: 1.3;
+            color: #fff;
         }
         h1 {
             margin-top: 0;
-            font-size: 1.802rem;
+            font-size: 1.382rem;
         }
 
         h2 {font-size: 1.602rem;}

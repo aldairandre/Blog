@@ -1,6 +1,7 @@
 import { collection } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import styled from "styled-components"
+import Main from "../components/Main"
 import RecipeReviewCard from "../components/Main/Card-mui"
 import NavBar from "../components/NavBar"
 import { db } from "../firebase/config"
@@ -17,6 +18,7 @@ const Home = () => {
     return (
       <>
         <NavBar/>
+        <Main/> 
         <Center>
           {allPost &&(
             allPost.map(

@@ -1,7 +1,15 @@
+import styled from "styled-components";
+import Title from "./title";
 export const Main = () => {
-    return(
-        <h1>Main</h1>
-    )
-}
+  return (
+    <Container>
+      <Title />
+    </Container>
+  );
+};
 
-export default {Main}
+const Container = styled.main`
+    margin: 0px 25px;
+`
+
+export default Main;
