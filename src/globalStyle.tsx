@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle `
             font-weight: 400;
             line-height: 1.3;
             color: #fff;
+            letter-spacing:0.06em
         }
         h1 {
             margin-top: 0;
